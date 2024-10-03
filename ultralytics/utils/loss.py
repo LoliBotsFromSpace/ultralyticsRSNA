@@ -164,7 +164,7 @@ class v8DetectionLoss:
 
         m = model.model[-1]  # Detect() module
         pos_weight=torch.FloatTensor([1, 2, 4] * 10).to(device) # 4:1 (for example)
-        self.bce = nn.BCEWithLogitsLoss(reduction="none", weights=pos_weight)
+        self.bce = nn.BCEWithLogitsLoss(reduction="none", pos_weight=pos_weight)
         self.hyp = h
         self.stride = m.stride  # model strides
         self.nc = m.nc  # number of classes
